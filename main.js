@@ -155,14 +155,17 @@ document.addEventListener("click", (e) => {
 
     });
     // outSide Loop
-
-    // if letter is wrong
-    if (!theStatus) {
-      // increase the wrong attempt
-      wrongAttempt++;
-
-      // add class wrong On The Draw Element
-
+      // 
+      //
+      // if letter is wrong
+      if (!theStatus) {
+        // increase the wrong attempt
+        wrongAttempt++;
+        
+        const wrongs = document.querySelector(".wrongs");
+        wrongs.innerHTML -= 1;
+        // add class wrong On The Draw Element
+        
       document.getElementById("fail").play()
       draw.classList.add(`wrong-${wrongAttempt}`)
       // add Fail sound
