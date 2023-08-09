@@ -74,7 +74,7 @@ let randomPropValue = words[randomPropName];
 let randomValueNum = Math.floor(Math.random() * randomPropValue.length);
 
 // let randomValueValue = randomPropValue[randomValueNum];
-let randomValueValue = "php";
+let randomValueValue = randomPropValue[randomValueNum];
 // console.log(randomPropValue);
 // console.log(randomValueNum);
 // set category info
