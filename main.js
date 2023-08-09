@@ -39,6 +39,9 @@ const words = {
     "r",
     "mysql",
     "python",
+    "HTML",
+    "CSS",
+    "SCSS",
   ],
   movies: [
     "Prestige",
@@ -49,6 +52,7 @@ const words = {
     "Memento",
     "Coco",
     "Up",
+    "CreedThree",
   ],
   people: [
     "Albert Einstein",
@@ -56,8 +60,9 @@ const words = {
     "Alexander",
     "Cleopatra",
     "Mahatma Ghandi",
+    "MohamedTamer",
   ],
-  countries: ["Syria", "Palestine", "Yemen", "Egypt", "Bahrain", "Qatar"],
+  countries: ["Syria", "Palestine", "Yemen", "Egypt", "Bahrain", "Qatar","USA","KSA"],
 };
 
 //  get random property
