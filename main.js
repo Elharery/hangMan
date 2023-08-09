@@ -171,14 +171,14 @@ document.addEventListener("click", (e) => {
       if (wrongAttempt === 8) {
         endGame();
           lettersContiner.classList.add("finished")
-          document.body.style = "overflow : hidden;";
+          // document.body.style = "overflow : hidden;";
 
       }
     }
     else if (result.length === choosenWord.length) {
     successGame()
       lettersContiner.classList.add("finished")
-      document.body.style = "overflow : hidden;";
+      // document.body.style = "overflow : hidden;";
     }
     else {
       document.getElementById("success").play()
