@@ -73,13 +73,15 @@ let randomPropValue = words[randomPropName];
 
 let randomValueNum = Math.floor(Math.random() * randomPropValue.length);
 
-let randomValueValue = randomPropValue[randomValueNum];
+// let randomValueValue = randomPropValue[randomValueNum];
+let randomValueValue = "php";
 // console.log(randomPropValue);
 // console.log(randomValueNum);
 // set category info
 
 document.querySelector(".game-info .category span").innerHTML = randomPropName;
-// + ' '+ randomValueValue // Show Answer
+// + ' '+ randomValueValue
+// Show Answer
 
 // select letters guess Element
 
@@ -106,7 +108,6 @@ lettersAndSpace.forEach((letter) => {
 
 // select guess spans
 let guessSpans = document.querySelectorAll(".letters-guess span");
-
 // set wrong attempt
 let wrongAttempt = 0;
 
@@ -115,6 +116,9 @@ let draw = document.querySelector(".hangman-draw")
 
 // handle clicking on letters
 
+// document.addEventListener("click", (e)=>console.log(e.key))
+
+let result = "";
 document.addEventListener("click", (e) => {
   let theStatus = false;
   if (e.target.className === "letter-box") {
@@ -125,62 +129,73 @@ document.addEventListener("click", (e) => {
 
     // choosen word
     let choosenWord = Array.from(randomValueValue.toLowerCase());
+    // let choosenWord = ["p","h", "p"]
 
     // lettersAndSpace choosen word
 
+    console.log(choosenWord);
+    console.log(guessSpans);
+    console.log(clickedLetter);
     choosenWord.forEach((wordLetter, wordIndex) => {
+
       // if clicked letter equal to one of the choosen word letters
       if (clickedLetter == wordLetter) {
         // set status to true
         theStatus = true;
-
+        result += clickedLetter;
         // console.log(`Found At Index Num ${index}`);
         // loop on all guess spans
         guessSpans.forEach((span, spanIndex) => {
           if (wordIndex === spanIndex) {
             span.innerHTML = clickedLetter;
           }
+          //
         });
       }
+
     });
     // outSide Loop
 
     // if letter is wrong
-    if (theStatus !== true) {
+    if (!theStatus) {
       // increase the wrong attempt
       wrongAttempt++;
 
       // add class wrong On The Draw Element
 
+      document.getElementById("fail").play()
       draw.classList.add(`wrong-${wrongAttempt}`)
-
       // add Fail sound
 
       // if letter is wrong
-
       if (wrongAttempt === 8) {
         endGame();
           lettersContiner.classList.add("finished")
+          document.body.style = "overflow : hidden;";
 
       }
-    } else {
-      document.getElementById("success").play()
-      successGame()
     }
-    // console.log(theStatus);
-  }
-});
-// End Game Function
-
-function successGame() {
-  let div = document.createElement("div")
-  let divT = document.createTextNode(`BRAVO`)
-
-  //
+    else if (result.length === choosenWord.length) {
+    successGame()
+      lettersContiner.classList.add("finished")
+      document.body.style = "overflow : hidden;";
+    }
+    else {
+      document.getElementById("success").play()
+    }
+        // console.log(theStatus);
+      }
+    });
+    
+    // End Game Function
+    function successGame() {
+      let div = document.createElement("div")
+      let divT = document.createTextNode(`BRAVO`)
+      //
   div.appendChild(divT)
   div.className = "popup";
+  document.getElementById("successed").play()
   //
-  // document.getElementById("successed").play()
   document.body.appendChild(div)
 }
 
@@ -188,7 +203,7 @@ function successGame() {
 
 function endGame() {
   let div = document.createElement("div")
-  let divT = document.createTextNode(`Game Over , The Word Is ${randomValueValue}`)
+  let divT = document.createTextNode(`Game Over , The Word Is "${randomValueValue}"`)
 
   //
   div.appendChild(divT)
@@ -198,7 +213,6 @@ function endGame() {
 
   document.body.appendChild(div)
 }
-
 // console.log(words);
 // console.log(allKeys);
 // console.log(randomPropNumber);
