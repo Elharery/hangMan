@@ -370,3 +370,10 @@ hr {
     width: auto !important;
   }
 }
+
+@media(max-width: 780px){
+
+  .overlay{
+    height: 200vh;
+  }
+}

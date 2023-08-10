@@ -17,12 +17,11 @@ let gameInfo = document.querySelector(".game-info")
 let body = document.querySelector(".body")
 let reg = /\w+/ig;
 console.log(reg.test(userNameInp));
-overlay.style.height = "200vh";
+// overlay.style.height = "200vh";
 sub.onclick = () => {
   if (userNameInp.value) {
     window.sessionStorage.setItem("userName", userNameInp.value);
     overlay.style.width = "0px";
-    // overlay.style.height = "200vh";
     poupUser.style.padding = "0px";
     userName.innerHTML = `Hello: ${sessionStorage.getItem("userName")}`;
     cont.style.width = "1000px";
@@ -34,18 +33,16 @@ sub.onclick = () => {
 userNameInp.oninput = () => {
   error.style.display = "none";
 };
-// userName.innerHTML = `Hello: ${userNameInp.value}`;
 
 if (window.sessionStorage.getItem("userName")) {
-  // userName()
-overlay.style.height = "200vh";
-
+  // overlay.style.height = "200vh";
   overlay.style.width = "0px";
   cont.style.width = "1000px";
   poupUser.style.padding = "0px";
   userName.innerHTML = `Hello: ${sessionStorage.getItem("userName")}`;
   sub.parentElement.remove();
-}true
+}
+
 
 // function userName() {
   //   let div = document.createElement("div")
