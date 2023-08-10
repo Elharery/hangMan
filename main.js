@@ -1,6 +1,8 @@
 // add button name
 const sub = document.getElementById("sub");
 //
+let cont = document.querySelector(".cont")
+//
 const overlay = document.querySelector(".overlay");
 //
 const userName = document.querySelector(".userName");
@@ -11,15 +13,19 @@ const error = document.querySelector(".error");
 //
 let gameInfo = document.querySelector(".game-info")
 //
+//
+let body = document.querySelector(".body")
 let reg = /\w+/ig;
 console.log(reg.test(userNameInp));
+overlay.style.height = "200vh";
 sub.onclick = () => {
   if (userNameInp.value) {
     window.sessionStorage.setItem("userName", userNameInp.value);
     overlay.style.width = "0px";
+    // overlay.style.height = "200vh";
     poupUser.style.padding = "0px";
     userName.innerHTML = `Hello: ${sessionStorage.getItem("userName")}`;
-    // userName()
+    cont.style.width = "1000px";
     sub.parentElement.remove();
   } else {
     error.style.display = "block";
@@ -32,7 +38,10 @@ userNameInp.oninput = () => {
 
 if (window.sessionStorage.getItem("userName")) {
   // userName()
+overlay.style.height = "200vh";
+
   overlay.style.width = "0px";
+  cont.style.width = "1000px";
   poupUser.style.padding = "0px";
   userName.innerHTML = `Hello: ${sessionStorage.getItem("userName")}`;
   sub.parentElement.remove();
