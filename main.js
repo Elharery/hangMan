@@ -1,3 +1,53 @@
+// add button name
+const sub = document.getElementById("sub");
+//
+const overlay = document.querySelector(".overlay");
+//
+const userName = document.querySelector(".userName");
+//
+const userNameInp = document.getElementById("user-name");
+//
+const error = document.querySelector(".error");
+//
+let gameInfo = document.querySelector(".game-info")
+//
+let reg = /\w+/ig;
+console.log(reg.test(userNameInp));
+sub.onclick = () => {
+  if (userNameInp.value) {
+    window.sessionStorage.setItem("userName", userNameInp.value);
+    overlay.style.width = "0px";
+    poupUser.style.padding = "0px";
+    userName.innerHTML = `Hello: ${sessionStorage.getItem("userName")}`;
+    // userName()
+    sub.parentElement.remove();
+  } else {
+    error.style.display = "block";
+  }
+};
+userNameInp.oninput = () => {
+  error.style.display = "none";
+};
+// userName.innerHTML = `Hello: ${userNameInp.value}`;
+
+if (window.sessionStorage.getItem("userName")) {
+  // userName()
+  overlay.style.width = "0px";
+  poupUser.style.padding = "0px";
+  userName.innerHTML = `Hello: ${sessionStorage.getItem("userName")}`;
+  sub.parentElement.remove();
+}true
+
+// function userName() {
+  //   let div = document.createElement("div")
+  //   //
+//   let divText = document.createTextNode(`Hello: ${userNameInp.value}`)
+//   // 
+//   div.appendChild(divText)
+//   gameInfo.appendChild(div)
+
+// }
+////////////////
 // Letters
 const letters = "abcdefghijklmnopqrstuvwxyz";
 
@@ -61,8 +111,20 @@ const words = {
     "Cleopatra",
     "Mahatma Ghandi",
     "MohamedTamer",
+    "Youssef",
+    "koky",
+    "farida",
   ],
-  countries: ["Syria", "Palestine", "Yemen", "Egypt", "Bahrain", "Qatar","USA","KSA"],
+  countries: [
+    "Syria",
+    "Palestine",
+    "Yemen",
+    "Egypt",
+    "Bahrain",
+    "Qatar",
+    "USA",
+    "KSA",
+  ],
 };
 
 //  get random property
@@ -104,6 +166,7 @@ lettersAndSpace.forEach((letter) => {
   // if letter is space
   if (letter === " ") {
     // add class to span
+    // letter = " "
     embtySpan.className = "has-space";
   }
   // append span to the letters guess coniner
@@ -117,7 +180,7 @@ let guessSpans = document.querySelectorAll(".letters-guess span");
 let wrongAttempt = 0;
 
 //selcet draw
-let draw = document.querySelector(".hangman-draw")
+let draw = document.querySelector(".hangman-draw");
 
 // handle clicking on letters
 
@@ -139,10 +202,9 @@ document.addEventListener("click", (e) => {
     // lettersAndSpace choosen word
 
     console.log(choosenWord);
-    console.log(guessSpans);
+    console.log(randomValueValue);
     console.log(clickedLetter);
     choosenWord.forEach((wordLetter, wordIndex) => {
-
       // if clicked letter equal to one of the choosen word letters
       if (clickedLetter == wordLetter) {
         // set status to true
@@ -157,69 +219,65 @@ document.addEventListener("click", (e) => {
           //
         });
       }
-
     });
     // outSide Loop
-      // 
-      //
-      // if letter is wrong
-      if (!theStatus) {
-        // increase the wrong attempt
-        wrongAttempt++;
-        
-        const wrongs = document.querySelector(".wrongs");
-        wrongs.innerHTML -= 1;
-        // add class wrong On The Draw Element
-        
-      document.getElementById("fail").play()
-      draw.classList.add(`wrong-${wrongAttempt}`)
+    //
+    //
+    // if letter is wrong
+    if (!theStatus) {
+      // increase the wrong attempt
+      wrongAttempt++;
+
+      const wrongs = document.querySelector(".wrongs");
+      wrongs.innerHTML -= 1;
+      // add class wrong On The Draw Element
+
+      document.getElementById("fail").play();
+      draw.classList.add(`wrong-${wrongAttempt}`);
       // add Fail sound
 
       // if letter is wrong
       if (wrongAttempt === 8) {
         endGame();
-          lettersContiner.classList.add("finished")
-          // document.body.style = "overflow : hidden;";
-
+        lettersContiner.classList.add("finished");
+        // document.body.style = "overflow : hidden;";
       }
-    }
-    else if (result.length === choosenWord.length) {
-    successGame()
-      lettersContiner.classList.add("finished")
+    } else if (result.length === choosenWord.length) {
+      successGame();
+      lettersContiner.classList.add("finished");
       // document.body.style = "overflow : hidden;";
+    } else {
+      document.getElementById("success").play();
     }
-    else {
-      document.getElementById("success").play()
-    }
-        // console.log(theStatus);
-      }
-    });
-    
-    // End Game Function
-    function successGame() {
-      let div = document.createElement("div")
-      let divT = document.createTextNode(`BRAVO`)
-      //
-  div.appendChild(divT)
-  div.className = "popup";
-  document.getElementById("successed").play()
+    // console.log(theStatus);
+  }
+});
+
+// End Game Function
+function successGame() {
+  let div = document.createElement("div");
+  let divT = document.createTextNode(`BRAVO`);
   //
-  document.body.appendChild(div)
+  div.appendChild(divT);
+  div.className = "popup";
+  document.getElementById("successed").play();
+  //
+  document.body.appendChild(div);
 }
 
-
-
 function endGame() {
-  let div = document.createElement("div")
-  let divT = document.createTextNode(`Game Over , The Word Is "${randomValueValue}"`)
+  let div = document.createElement("div");
+  let divT = document.createTextNode(
+    `Game Over , The Word Is "${randomValueValue}"`
+  );
 
   //
-  div.appendChild(divT)
+  div.appendChild(divT);
   div.className = "popup";
   //
-  document.getElementById("fail").play()
+  document.getElementById("fail").play();
 
-  document.body.appendChild(div)
+  document.body.appendChild(div);
 }
 // console.log(words);
 // console.log(allKeys);
