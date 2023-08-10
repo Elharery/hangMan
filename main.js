@@ -196,6 +196,7 @@ let draw = document.querySelector(".hangman-draw");
 
 // document.addEventListener("click", (e)=>console.log(e.key))
 
+const wrongs = document.querySelector(".wrongs");
 let result = "";
 document.addEventListener("click", (e) => {
   let theStatus = false;
@@ -238,7 +239,6 @@ document.addEventListener("click", (e) => {
       // increase the wrong attempt
       wrongAttempt++;
 
-      const wrongs = document.querySelector(".wrongs");
       wrongs.innerHTML -= 1;
       // add class wrong On The Draw Element
 
@@ -276,7 +276,7 @@ document.addEventListener("click", (e) => {
 function successGame() {
   let div = document.createElement("div");
   let spanBravo = document.createElement("span");
-  let spanT = document.createTextNode(`BRAVO`);
+  let spanT = document.createTextNode(`Congratulation: "${sessionStorage.getItem("userName")}"🎉`);
   //
   //
   div.appendChild(spanBravo)
@@ -291,16 +291,30 @@ function successGame() {
 }
 
 function endGame() {
+  // if (wrongs.innerHTML == 1) {
+    document.getElementById("failed").play();
+  // document.getElementById("fail").pused();
+  // }
   let div = document.createElement("div");
+  let spanBad = document.createElement("span");
+  //
   let divT = document.createTextNode(
     `Game Over , The Word Is "${randomValueValue}"`
   );
-
   //
-  div.appendChild(divT);
+  const spanSad = document.createElement("span")
+  const SadText = document.createTextNode("^_^")
+  // 
+  //
+  spanSad.appendChild(SadText)
+  spanBad.appendChild(divT)
+  div.appendChild(spanSad)
+  div.appendChild(spanBad)
+  spanBad.style.display = "block";
+
+  // div.appendChild(divT);
   div.className = "popup";
   //
-  document.getElementById("fail").play();
 
   document.body.appendChild(div);
 }
