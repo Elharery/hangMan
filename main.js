@@ -13,6 +13,7 @@ const error = document.querySelector(".error");
 //
 let gameInfo = document.querySelector(".game-info")
 //
+let enterStartGame = document.getElementById("enter-start-game")
 //
 let body = document.querySelector(".body")
 let reg = /\w+/ig;
@@ -21,9 +22,11 @@ console.log(reg.test(userNameInp));
 sub.onclick = () => {
   if (userNameInp.value) {
     window.sessionStorage.setItem("userName", userNameInp.value);
-    overlay.style.width = "0px";
+    // overlay.style.width = "0px";
     poupUser.style.padding = "0px";
+    enterStartGame.style.display = "none"
     userName.innerHTML = `Hello: ${sessionStorage.getItem("userName")}`;
+    poupUser.style.width = "0px";
     cont.style.width = "1000px";
     sub.parentElement.remove();
   } else {
@@ -33,11 +36,12 @@ sub.onclick = () => {
 userNameInp.oninput = () => {
   error.style.display = "none";
 };
-
 if (window.sessionStorage.getItem("userName")) {
   // overlay.style.height = "200vh";
-  overlay.style.width = "0px";
+  // overlay.style.width = "0px";
+  enterStartGame.style.display = "none"
   cont.style.width = "1000px";
+  poupUser.style.width = "0px";
   poupUser.style.padding = "0px";
   userName.innerHTML = `Hello: ${sessionStorage.getItem("userName")}`;
   sub.parentElement.remove();
@@ -260,11 +264,26 @@ document.addEventListener("click", (e) => {
 });
 
 // End Game Function
+// function statues() {
+//   let rate = wrongs;
+//   const spanWr = document.createElement("span")
+//   const spanWrT = document.createTextNode(rate)
+//   spanWr.appendChild(spanWrT)
+//   if (wrongs >= 5) {
+//     spanWrT.innerHTML = "Great"
+//   }
+// }
 function successGame() {
   let div = document.createElement("div");
-  let divT = document.createTextNode(`BRAVO`);
+  let spanBravo = document.createElement("span");
+  let spanT = document.createTextNode(`BRAVO`);
   //
-  div.appendChild(divT);
+  //
+  div.appendChild(spanBravo)
+  div.appendChild(spanT)
+  // div.appendChild(spanWrT)
+  //
+  spanBravo.style.display = "block";
   div.className = "popup";
   document.getElementById("successed").play();
   //
@@ -292,3 +311,8 @@ function endGame() {
 // console.log(randomPropValue);
 // console.log(randomValueNum);
 // console.log(randomValueValue);
+
+reset.addEventListener("click", () => {
+  sessionStorage.clear();
+  location.reload()
+})

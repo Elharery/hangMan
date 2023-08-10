@@ -309,6 +309,8 @@ hr {
 }
 
 .popup-username {
+  width: 100%;
+  height: 100%;
   position: fixed;
   background-color: #fff;
   padding: 100px 20px;
@@ -328,12 +330,18 @@ hr {
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
 }
-.overlay{
+/* .overlay{
   background-color: #000;
   opacity: 0.7;
   width: 100%;
   height: 100%;
   position: absolute;
+} */
+.holder{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 #user-name{
   background: #eee;
@@ -357,6 +365,12 @@ hr {
   cursor: pointer;
 }
 /* // */
+#enter-start-game{
+  color: #000;
+  font-size: 12px;
+  display: flex;
+  margin: 0 5px 5px;
+}
 .error{
   color: red;
   font-size: 10px;

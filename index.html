@@ -1,53 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hangman Game</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="overlay"></div>
-  <div class="cont">
-    <div class="game-info">
-      <!-- <div class="game-name">Hangman</div> -->
-      <div class="userName"></div>
-      <div class="div-wrongs">Trys: <span class="wrongs">8</span></div>
-      <div class="category">
-        Category Is: <span class=""></span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hangman Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="overlay"></div>
+    <div class="cont">
+      <div class="game-info">
+        <!-- <div class="game-name">Hangman</div> -->
+        <div class="userName"></div>
+        <div class="div-wrongs">Trys: <span class="wrongs">8</span></div>
+        <div class="category">Category Is: <span class=""></span></div>
       </div>
-    </div>
-    <hr>
-    <div class="row">
-      <div class="hangman-draw">
-        <div class="the-draw">
-          <div class="stand"></div>
-          <div class="hang"></div>
-          <div class="rope"></div>
-          <div class="man">
-            <div class="head"></div>
-            <div class="body"></div>
-            <div class="hands"></div>
-            <div class="legs"></div>
+      <hr />
+      <div class="row">
+        <div class="hangman-draw">
+          <div class="the-draw">
+            <div class="stand"></div>
+            <div class="hang"></div>
+            <div class="rope"></div>
+            <div class="man">
+              <div class="head"></div>
+              <div class="body"></div>
+              <div class="hands"></div>
+              <div class="legs"></div>
+            </div>
           </div>
         </div>
+        <div class="letters"></div>
       </div>
-      <div class="letters"></div>
-    </div>
-    <div class="letters-guess"></div>
-    <div class="popup-username" id="poupUser">
-      <div class="" style="display: flex;">
-        <input type="text" name="" id="user-name" pattern="[a-z]" placeholder="Enter User Name">
-        <button class="submit" id="sub">Submit</button>
-        <!-- <input type="submit" name="" id="sub"> -->
-      </div>
+      <div class="letters-guess"></div>
+
+      <button
+        id="reset"
+        style="
+          padding: 10px 15px;
+          outline: none;
+          border: none;
+          margin: 50px auto;
+          border-radius: 6px;
+          cursor: pointer;
+          display:block;
+          "
+      >
+        Reset Game
+      </button>
+
+      <div class="popup-username" id="poupUser">
+        <div class="holder">
+          <label for="" id="enter-start-game"
+            >Enter Your Name To Start Game:</label
+          >
+          <div class="" style="display: flex">
+            <input
+              type="text"
+              name=""
+              id="user-name"
+              pattern="[a-z]"
+              placeholder="Enter User Name"
+            />
+            <button class="submit" id="sub">Submit</button>
+            <!-- <input type="submit" name="" id="sub"> -->
+          </div>
           <p class="error">Error, Please Fill You User Name</p>
-          
+        </div>
+      </div>
     </div>
-  </div>
-  <audio src="audio/success.mp3" preload="auto" id="success"></audio>
-  <audio src="audio/fail.mp3" preload="auto" id="fail"></audio>
-  <audio src="audio/successed.mp3" preload="auto" id="successed"></audio>
-  <script src="main.js"></script>
-</body>
+    <audio src="audio/success.mp3" preload="auto" id="success"></audio>
+    <audio src="audio/fail.mp3" preload="auto" id="fail"></audio>
+    <audio src="audio/successed.mp3" preload="auto" id="successed"></audio>
+    <script src="main.js"></script>
+  </body>
 </html>
