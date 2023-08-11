@@ -24,26 +24,22 @@ let reged = reg.test(userNameInp);
 console.log(reg.test(userNameInp));
 const timer = document.querySelector(".count-time");
 
-let count = setInterval(countTime,1000)
+const count = setInterval(countTime,1000)
 function countTime() {
 if (timer.innerHTML !== "0") {
 timer.innerHTML--;
 }
 if (timer.innerHTML <= "10") {
-timer.style.animationName = "redAnimated"
+  timer.style.animationName = "redAnimated"
 }
 if (timer.innerHTML === "0") {
 timer.style.animationName = "none"
 endGame()
 clearInterval(count)
 }
-}
 sub.onclick = () => {
   if (userNameInp.value) {
-    
-    
-    
-    
+
     //
     window.sessionStorage.setItem("userName", userNameInp.value);
     // overlay.style.width = "0px";
@@ -57,6 +53,7 @@ sub.onclick = () => {
   } else {
     error.style.display = "block";
   }
+}
 };
 userNameInp.oninput = () => {
   error.style.display = "none";
@@ -64,7 +61,6 @@ userNameInp.oninput = () => {
 if (window.sessionStorage.getItem("userName")) {
   // overlay.style.height = "200vh";
   // overlay.style.width = "0px";
-  
   enterStartGame.style.display = "none";
   cont.style.width = "1000px";
   poupUser.style.width = "0px";
