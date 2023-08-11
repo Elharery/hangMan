@@ -29,7 +29,7 @@ function countTime() {
 if (timer.innerHTML !== "0") {
 timer.innerHTML--;
 }
-if (timer.innerHTML === "10") {
+if (timer.innerHTML >= "10") {
 timer.style.animationName = "redAnimated"
 }
 if (timer.innerHTML === "0") {
@@ -368,8 +368,8 @@ function endGame() {
   let parent = document.createElement("div")
   parent.className = "parent";
   document.getElementById("failed").play();
-  document.getElementById("fail").pause();
-  // document.getElementById("fail").currentTime = 0; // stop the sound
+  // document.getElementById("fail").pause();
+  document.getElementById("fail").currentTime = 0; // stop the sound
   let div = document.createElement("div");
   let spanBad = document.createElement("span");
   //
