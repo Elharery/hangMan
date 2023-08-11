@@ -29,7 +29,7 @@ function countTime() {
 if (timer.innerHTML !== "0") {
 timer.innerHTML--;
 }
-if (timer.innerHTML >= "10") {
+if (timer.innerHTML <= "10") {
 timer.style.animationName = "redAnimated"
 }
 if (timer.innerHTML === "0") {
