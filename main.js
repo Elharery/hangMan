@@ -3,6 +3,9 @@ const sub = document.getElementById("sub");
 //
 let cont = document.querySelector(".cont");
 //
+let winsCounter = document.querySelector(".wins-counter")
+//
+
 const overlay = document.querySelector(".overlay");
 //
 const userName = document.querySelector(".userName");
@@ -19,7 +22,6 @@ let body = document.querySelector(".body");
 let reg = /\w+/ig;
 let reged = reg.test(userNameInp);
 console.log(reg.test(userNameInp));
-// overlay.style.height = "200vh";
 sub.onclick = () => {
   if (userNameInp.value) {
     window.sessionStorage.setItem("userName", userNameInp.value);
@@ -41,6 +43,7 @@ userNameInp.oninput = () => {
 if (window.sessionStorage.getItem("userName")) {
   // overlay.style.height = "200vh";
   // overlay.style.width = "0px";
+  
   enterStartGame.style.display = "none";
   cont.style.width = "1000px";
   poupUser.style.width = "0px";
@@ -48,7 +51,28 @@ if (window.sessionStorage.getItem("userName")) {
   userName.innerHTML = `Hello: ${sessionStorage.getItem("userName")}`;
   sub.parentElement.remove();
 }
+////////////
 
+const timer = document.querySelector(".count-time");
+
+let count = setInterval(countTime,1000)
+
+
+function countTime() {
+  if (timer.innerHTML !== "0") {
+    timer.innerHTML--;
+  }
+  if (timer.innerHTML === "5") {
+    timer.style.animationName = "redAnimated"
+  }
+  if (timer.innerHTML === "0") {
+    timer.style.animationName = "none"
+    endGame()
+    clearInterval(count)
+  }
+}
+
+////////////
 document.addEventListener('keydown', event => {
   if (event.key === 'Enter') {
     sub.click()
@@ -234,16 +258,12 @@ document.addEventListener("click", (e) => {
   let theStatus = false;
   if (e.target.className === "letter-box") {
     e.target.classList.add("clicked");
-    
     // get clicked letter
     let clickedLetter = e.target.innerHTML.toLowerCase();
-
     // choosen word
     let choosenWord = Array.from(randomValueValue.toLowerCase());
     // let choosenWord = ["p","h", "p"]
-    
     // lettersAndSpace choosen word
-    
     choosenWord.forEach((wordLetter, wordIndex) => {
       // if clicked letter equal to one of the choosen word letters
       if (clickedLetter == wordLetter) {
@@ -267,7 +287,8 @@ document.addEventListener("click", (e) => {
     if (!theStatus) {
       // increase the wrong attempt
       wrongAttempt++;
-      wrongs.innerHTML -= 1;
+      wrongs.innerHTML++;
+      wrongs.style.backgroundColor = "#f00";
       // add class wrong On The Draw Element
       document.getElementById("fail").play();
       draw.classList.add(`wrong-${wrongAttempt}`);
@@ -283,6 +304,8 @@ document.addEventListener("click", (e) => {
       lettersContiner.classList.add("finished");
     }
     else {
+      winsCounter.style.backgroundColor = "rgb(124, 209, 174)";
+      winsCounter.innerHTML++;
       document.getElementById("success").play();
     }
     // console.log(theStatus);
@@ -298,7 +321,11 @@ document.addEventListener("click", (e) => {
     //     spanWrT.innerHTML = "Great"
     //   }
     // }
-    function successGame() {
+function successGame() {
+  clearInterval(count)
+  document.body.style.overflow = "hidden";
+  let parent = document.createElement("div")
+  parent.className = "parent";
   let div = document.createElement("div");
   let spanBravo = document.createElement("span");
   let spanT = document.createTextNode(
@@ -326,12 +353,17 @@ document.addEventListener("click", (e) => {
   }
   div.appendChild(btn)
   btn.appendChild(playAgain)
-  document.body.style.overflow = "hidden";
       //
-  document.body.appendChild(div);
+      parent.appendChild(div)
+  document.body.appendChild(parent);
 }
 
 function endGame() {
+  clearInterval(count)
+  document.body.style.overflow = "hidden";
+  // faileds()
+  let parent = document.createElement("div")
+  parent.className = "parent";
   document.getElementById("failed").play();
   document.getElementById("fail").pause();
   document.getElementById("fail").currentTime = 0; // stop the sound
@@ -362,11 +394,11 @@ function endGame() {
   }
   div.appendChild(btn)
   btn.appendChild(playAgain)
-  document.body.style.overflow = "hidden";
   //
-  document.body.appendChild(div);
+  parent.appendChild(div)
+  document.body.appendChild(parent);
 }
-// console.log(Array.from(randomValueValue).join(""));
+
 reset.addEventListener("click", () => {
   location.reload();
 });
@@ -374,3 +406,4 @@ logout.addEventListener("click", () => {
   sessionStorage.clear();
   location.reload();
 });
+// console.log(Array.from(randomValueValue).join(""));

@@ -12,12 +12,27 @@
       <div class="game-info">
         <!-- <div class="game-name">Hangman</div> -->
         <div class="userName"></div>
-        <div class="div-wrongs">Trys: <span class="wrongs">8</span></div>
+        <strong class="">The site must be in English</strong>
         <div class="category">Category Is: <span class=""></span></div>
       </div>
       <hr />
       <div class="row">
         <div class="hangman-draw">
+          <div class="info-game">
+            <div class="timer column">
+              <span>Timer:</span>
+              <p class="count-time circle">90</p>
+            </div>
+            <div class="div-wrongs column">
+              <span>Attembts:</span>
+              <!-- <span style="font-size: 5px;">At Least 8 Wrongs</span> -->
+              <p class="wrongs circle">0</p>
+            </div>
+            <div class="correct column">
+              <span>Correct:</span>
+              <p class=" circle wins-counter">0</p>
+            </div>
+          </div>
           <div class="the-draw">
             <div class="stand"></div>
             <div class="hang"></div>
@@ -69,21 +84,6 @@
           Logout
         </button>
       </div>
-      <!-- <button
-        id="play-again"
-        style="
-          padding: 10px 15px;
-          outline: none;
-          border: none;
-          border-radius: 6px;
-          cursor: pointer;
-          /*background-color: ;*/
-          color: #000;
-        "
-      >
-        Play Again
-      </button> -->
-
       <div class="popup-username" id="poupUser">
         <div class="holder">
           <label for="" id="enter-start-game"
