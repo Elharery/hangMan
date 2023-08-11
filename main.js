@@ -317,7 +317,17 @@ document.addEventListener("click", (e) => {
   word.style.display = "block";
   div.className = "popup";
   document.getElementById("successed").play();
-  //
+  //add button
+  let btn = document.createElement("button")
+  let playAgain = document.createTextNode("Play Again");
+  btn.id = "playAgain";
+  btn.onclick = () => {
+    location.reload()
+  }
+  div.appendChild(btn)
+  btn.appendChild(playAgain)
+  document.body.style.overflow = "hidden";
+      //
   document.body.appendChild(div);
 }
 
