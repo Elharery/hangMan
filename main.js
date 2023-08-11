@@ -34,8 +34,8 @@ if (timer.innerHTML <= "10") {
 }
 if (timer.innerHTML === "0") {
 timer.style.animationName = "none"
-endGame()
 clearInterval(count)
+endGame()
 }
 sub.onclick = () => {
   if (userNameInp.value) {
