@@ -369,7 +369,7 @@ function endGame() {
   parent.className = "parent";
   document.getElementById("failed").play();
   // document.getElementById("fail").pause();
-  document.getElementById("fail").currentTime = 0; // stop the sound
+  // document.getElementById("fail").currentTime = 0; // stop the sound
   let div = document.createElement("div");
   let spanBad = document.createElement("span");
   //
