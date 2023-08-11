@@ -22,8 +22,29 @@ let body = document.querySelector(".body");
 let reg = /\w+/ig;
 let reged = reg.test(userNameInp);
 console.log(reg.test(userNameInp));
+const timer = document.querySelector(".count-time");
+
+let count = setInterval(countTime,1000)
+function countTime() {
+if (timer.innerHTML !== "0") {
+timer.innerHTML--;
+}
+if (timer.innerHTML === "10") {
+timer.style.animationName = "redAnimated"
+}
+if (timer.innerHTML === "0") {
+timer.style.animationName = "none"
+endGame()
+clearInterval(count)
+}
+}
 sub.onclick = () => {
   if (userNameInp.value) {
+    
+    
+    
+    
+    //
     window.sessionStorage.setItem("userName", userNameInp.value);
     // overlay.style.width = "0px";
     poupUser.style.padding = "0px";
@@ -53,24 +74,6 @@ if (window.sessionStorage.getItem("userName")) {
 }
 ////////////
 
-const timer = document.querySelector(".count-time");
-
-let count = setInterval(countTime,1000)
-
-
-function countTime() {
-  if (timer.innerHTML !== "0") {
-    timer.innerHTML--;
-  }
-  if (timer.innerHTML === "5") {
-    timer.style.animationName = "redAnimated"
-  }
-  if (timer.innerHTML === "0") {
-    timer.style.animationName = "none"
-    endGame()
-    clearInterval(count)
-  }
-}
 
 ////////////
 document.addEventListener('keydown', event => {
@@ -366,7 +369,7 @@ function endGame() {
   parent.className = "parent";
   document.getElementById("failed").play();
   document.getElementById("fail").pause();
-  document.getElementById("fail").currentTime = 0; // stop the sound
+  // document.getElementById("fail").currentTime = 0; // stop the sound
   let div = document.createElement("div");
   let spanBad = document.createElement("span");
   //
