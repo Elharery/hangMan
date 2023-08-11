@@ -440,6 +440,9 @@ animation-direction: alternate;
 
 /* / */
 @media (max-width: 767px) {
+  .game-info{
+    font-size: 10px;
+  }
   .row {
     flex-direction: column;
   }
