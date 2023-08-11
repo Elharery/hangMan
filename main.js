@@ -1,7 +1,7 @@
 // add button name
 const sub = document.getElementById("sub");
 //
-let cont = document.querySelector(".cont")
+let cont = document.querySelector(".cont");
 //
 const overlay = document.querySelector(".overlay");
 //
@@ -11,12 +11,13 @@ const userNameInp = document.getElementById("user-name");
 //
 const error = document.querySelector(".error");
 //
-let gameInfo = document.querySelector(".game-info")
+let gameInfo = document.querySelector(".game-info");
 //
-let enterStartGame = document.getElementById("enter-start-game")
+let enterStartGame = document.getElementById("enter-start-game");
 //
-let body = document.querySelector(".body")
+let body = document.querySelector(".body");
 let reg = /\w+/ig;
+let reged = reg.test(userNameInp);
 console.log(reg.test(userNameInp));
 // overlay.style.height = "200vh";
 sub.onclick = () => {
@@ -24,7 +25,8 @@ sub.onclick = () => {
     window.sessionStorage.setItem("userName", userNameInp.value);
     // overlay.style.width = "0px";
     poupUser.style.padding = "0px";
-    enterStartGame.style.display = "none"
+    enterStartGame.style.display = "none";
+    error.style.display = "none";
     userName.innerHTML = `Hello: ${sessionStorage.getItem("userName")}`;
     poupUser.style.width = "0px";
     cont.style.width = "1000px";
@@ -39,7 +41,7 @@ userNameInp.oninput = () => {
 if (window.sessionStorage.getItem("userName")) {
   // overlay.style.height = "200vh";
   // overlay.style.width = "0px";
-  enterStartGame.style.display = "none"
+  enterStartGame.style.display = "none";
   cont.style.width = "1000px";
   poupUser.style.width = "0px";
   poupUser.style.padding = "0px";
@@ -47,12 +49,17 @@ if (window.sessionStorage.getItem("userName")) {
   sub.parentElement.remove();
 }
 
+document.addEventListener('keydown', event => {
+  if (event.key === 'Enter') {
+    sub.click()
+  }
+});
 
 // function userName() {
-  //   let div = document.createElement("div")
-  //   //
+//   let div = document.createElement("div")
+//   //
 //   let divText = document.createTextNode(`Hello: ${userNameInp.value}`)
-//   // 
+//   //
 //   div.appendChild(divText)
 //   gameInfo.appendChild(div)
 
@@ -115,15 +122,16 @@ const words = {
     "CreedThree",
   ],
   people: [
-    "Albert Einstein",
+    // "Albert Einstein",
     "Hitchcock",
     "Alexander",
     "Cleopatra",
-    "Mahatma Ghandi",
-    "MohamedTamer",
-    "Youssef",
-    "koky",
-    "farida",
+    // ""
+    // "Mahatma Ghandi",
+    // "Mohamed Tamer",
+    // "Ahmed Zewail",
+    // "Mostafa El Sayed",
+    // "Elon Mask",
   ],
   countries: [
     "Syria",
@@ -135,6 +143,30 @@ const words = {
     "USA",
     "KSA",
   ],
+  cars: [
+    "Bmw",
+    "Fiat",
+    "Hyundai",
+    "Chevrolet",
+    "Toyota",
+    "Mitsubishi",
+    "Nissan",
+    "Kia",
+    "MercedesBenz",
+    "Gelly",
+    "Mg",
+    "Jeep",
+    "Suzuki",
+    "Proton",
+    "Ferrari",
+    "Citroen",
+    "Audi",
+    "Chery",
+    "Ford",
+    "Peugeot",
+    "Porsche",
+    "Bentley"
+  ]
 };
 
 //  get random property
@@ -150,8 +182,8 @@ let randomPropValue = words[randomPropName];
 
 let randomValueNum = Math.floor(Math.random() * randomPropValue.length);
 
-// let randomValueValue = randomPropValue[randomValueNum];
 let randomValueValue = randomPropValue[randomValueNum];
+// let randomValueValue = "php";
 // console.log(randomPropValue);
 // console.log(randomValueNum);
 // set category info
@@ -177,7 +209,7 @@ lettersAndSpace.forEach((letter) => {
   if (letter === " ") {
     // add class to span
     // letter = " "
-    embtySpan.className = "has-space";
+    embtySpan.className = "has-space"; // with space
   }
   // append span to the letters guess coniner
 
@@ -202,19 +234,16 @@ document.addEventListener("click", (e) => {
   let theStatus = false;
   if (e.target.className === "letter-box") {
     e.target.classList.add("clicked");
-
+    
     // get clicked letter
     let clickedLetter = e.target.innerHTML.toLowerCase();
 
     // choosen word
     let choosenWord = Array.from(randomValueValue.toLowerCase());
     // let choosenWord = ["p","h", "p"]
-
+    
     // lettersAndSpace choosen word
-
-    console.log(choosenWord);
-    console.log(randomValueValue);
-    console.log(clickedLetter);
+    
     choosenWord.forEach((wordLetter, wordIndex) => {
       // if clicked letter equal to one of the choosen word letters
       if (clickedLetter == wordLetter) {
@@ -238,52 +267,54 @@ document.addEventListener("click", (e) => {
     if (!theStatus) {
       // increase the wrong attempt
       wrongAttempt++;
-
       wrongs.innerHTML -= 1;
       // add class wrong On The Draw Element
-
       document.getElementById("fail").play();
       draw.classList.add(`wrong-${wrongAttempt}`);
-      // add Fail sound
-
       // if letter is wrong
       if (wrongAttempt === 8) {
         endGame();
         lettersContiner.classList.add("finished");
         // document.body.style = "overflow : hidden;";
       }
-    } else if (result.length === choosenWord.length) {
+    } 
+    else if (result.length === choosenWord.length) {
       successGame();
       lettersContiner.classList.add("finished");
-      // document.body.style = "overflow : hidden;";
-    } else {
+    }
+    else {
       document.getElementById("success").play();
     }
     // console.log(theStatus);
   }
 });
-
 // End Game Function
 // function statues() {
-//   let rate = wrongs;
-//   const spanWr = document.createElement("span")
-//   const spanWrT = document.createTextNode(rate)
-//   spanWr.appendChild(spanWrT)
-//   if (wrongs >= 5) {
-//     spanWrT.innerHTML = "Great"
-//   }
-// }
-function successGame() {
+  //   let rate = wrongs;
+  //   const spanWr = document.createElement("span")
+  //   const spanWrT = document.createTextNode(rate)
+  //   spanWr.appendChild(spanWrT)
+  //   if (wrongs >= 5) {
+    //     spanWrT.innerHTML = "Great"
+    //   }
+    // }
+    function successGame() {
   let div = document.createElement("div");
   let spanBravo = document.createElement("span");
-  let spanT = document.createTextNode(`Congratulation: "${sessionStorage.getItem("userName")}"🎉`);
-  //
-  //
-  div.appendChild(spanBravo)
-  div.appendChild(spanT)
-  // div.appendChild(spanWrT)
-  //
-  spanBravo.style.display = "block";
+  let spanT = document.createTextNode(
+    `Congratulation: "${sessionStorage.getItem("userName")}"🎉`
+    );
+    let word = document.createElement("span");
+    let wordT = document.createTextNode(`The Word Is "${randomValueValue}"`);
+    //
+    //
+    div.appendChild(spanBravo);
+    spanBravo.appendChild(spanT);
+    div.appendChild(word);
+    word.appendChild(wordT);
+    //
+    spanBravo.style.display = "block";
+  word.style.display = "block";
   div.className = "popup";
   document.getElementById("successed").play();
   //
@@ -291,42 +322,45 @@ function successGame() {
 }
 
 function endGame() {
-  // if (wrongs.innerHTML == 1) {
-    document.getElementById("failed").play();
-  // document.getElementById("fail").pused();
-  // }
+  document.getElementById("failed").play();
+  document.getElementById("fail").pause();
+  document.getElementById("fail").currentTime = 0; // stop the sound
   let div = document.createElement("div");
   let spanBad = document.createElement("span");
   //
   let divT = document.createTextNode(
     `Game Over , The Word Is "${randomValueValue}"`
-  );
+    );
+    //
+    const spanSad = document.createElement("span");
+    const SadText = document.createTextNode("^_^");
+    //
   //
-  const spanSad = document.createElement("span")
-  const SadText = document.createTextNode("^_^")
-  // 
-  //
-  spanSad.appendChild(SadText)
-  spanBad.appendChild(divT)
-  div.appendChild(spanSad)
-  div.appendChild(spanBad)
+  spanSad.appendChild(SadText);
+  spanBad.appendChild(divT);
+  div.appendChild(spanSad);
+  div.appendChild(spanBad);
   spanBad.style.display = "block";
-
   // div.appendChild(divT);
   div.className = "popup";
+  // add button
+  let btn = document.createElement("button")
+  let playAgain = document.createTextNode("Play Again");
+  btn.id = "playAgain";
+  btn.onclick = () => {
+    location.reload()
+  }
+  div.appendChild(btn)
+  btn.appendChild(playAgain)
+  document.body.style.overflow = "hidden";
   //
-
   document.body.appendChild(div);
 }
-// console.log(words);
-// console.log(allKeys);
-// console.log(randomPropNumber);
-// console.log(randomPropName);
-// console.log(randomPropValue);
-// console.log(randomValueNum);
-// console.log(randomValueValue);
-
+// console.log(Array.from(randomValueValue).join(""));
 reset.addEventListener("click", () => {
+  location.reload();
+});
+logout.addEventListener("click", () => {
   sessionStorage.clear();
-  location.reload()
-})
+  location.reload();
+});

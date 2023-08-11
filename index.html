@@ -34,20 +34,55 @@
       </div>
       <div class="letters-guess"></div>
 
-      <button
-        id="reset"
+      <div
+        class="btns"
+        style="
+          display: flex;
+          justify-content: center;
+          margin: 30px 0 0;
+          gap: 5px;
+        "
+      >
+        <button
+          id="reset"
+          style="
+            padding: 10px 15px;
+            outline: none;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+          "
+        >
+          Reset Game</button
+        ><button
+          id="logout"
+          style="
+            padding: 10px 15px;
+            outline: none;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            background-color: #f00;
+            color: #fff;
+          "
+        >
+          Logout
+        </button>
+      </div>
+      <!-- <button
+        id="play-again"
         style="
           padding: 10px 15px;
           outline: none;
           border: none;
-          margin: 50px auto;
           border-radius: 6px;
           cursor: pointer;
-          display:block;
-          "
+          /*background-color: ;*/
+          color: #000;
+        "
       >
-        Reset Game
-      </button>
+        Play Again
+      </button> -->
 
       <div class="popup-username" id="poupUser">
         <div class="holder">
@@ -61,11 +96,12 @@
               id="user-name"
               pattern="[a-z]"
               placeholder="Enter User Name"
+              maxlength="15"
             />
             <button class="submit" id="sub">Submit</button>
             <!-- <input type="submit" name="" id="sub"> -->
           </div>
-          <p class="error">Error, Please Fill You User Name</p>
+          <p class="error">Error, Please Fill Your User Name</p>
         </div>
       </div>
     </div>
