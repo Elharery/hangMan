@@ -446,11 +446,11 @@ function showAnswer() {
   document.body.appendChild(parent)
 }
 
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
-    submit.click()
-  }
-})
+// document.addEventListener("keydown", (e) => {
+//   if (e.key === "Enter") {
+//     submit.click()
+//   }
+// })
 /////
 const getYear = new Date().getFullYear()
 
