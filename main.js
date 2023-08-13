@@ -1,48 +1,49 @@
-// add button name
-const sub = document.getElementById("sub");
-//
-let cont = document.querySelector(".cont");
-//
+// // add button name
+// const sub = document.getElementById("sub");
+// //
+// let cont = document.querySelector(".cont");
+// //
 let winsCounter = document.querySelector(".wins-counter");
-//
+// //
 
-const overlay = document.querySelector(".overlay");
-//
-const userName = document.querySelector(".userName");
-//
-const userNameInp = document.getElementById("user-name");
-//
-const error = document.querySelector(".error");
-//
-let gameInfo = document.querySelector(".game-info");
-//
-let enterStartGame = document.getElementById("enter-start-game");
-//
-let body = document.querySelector(".body");
-let reg = /\w+/gi;
-let reged = reg.test(userNameInp);
-console.log(reg.test(userNameInp));
+// const overlay = document.querySelector(".overlay");
+// //
+// const userName = document.querySelector(".userName");
+// //
+// const userNameInp = document.getElementById("user-name");
+// //
+// const error = document.querySelector(".error");
+// //
+// let gameInfo = document.querySelector(".game-info");
+// //
+// let enterStartGame = document.getElementById("enter-start-game");
+// //
+// let body = document.querySelector(".body");
+// let reg = /\w+/gi;
+// let reged = reg.test(userNameInp);
+// console.log(reg.test(userNameInp));
 
-sub.onclick = () => {
-  if (userNameInp.value) {
-    location.reload();
-    //
-    window.sessionStorage.setItem("userName", userNameInp.value);
-    // overlay.style.width = "0px";
-    poupUser.style.padding = "0px";
-    enterStartGame.style.display = "none";
-    error.style.display = "none";
-    userName.innerHTML = `Hello: ${sessionStorage.getItem("userName")}`;
-    poupUser.style.width = "0px";
-    cont.style.width = "1000px";
-    sub.parentElement.remove();
-  } else {
-    error.style.display = "block";
-  }
-};
-userNameInp.oninput = () => {
-  error.style.display = "none";
-};
+// sub.onclick = () => {
+//   if (userNameInp.value) {
+//     location.reload();
+//     //
+//     window.sessionStorage.setItem("userName", userNameInp.value);
+//     // overlay.style.width = "0px";
+//     poupUser.style.padding = "0px";
+//     enterStartGame.style.display = "none";
+//     error.style.display = "none";
+//     userName.innerHTML = `Hello: ${sessionStorage.getItem("userName")}`;
+//     poupUser.style.width = "0px";
+//     cont.style.width = "1000px";
+//     sub.parentElement.remove();
+//   } else {
+//     error.style.display = "block";
+//   }
+// };
+// userNameInp.oninput = () => {
+//   error.style.display = "none";
+// };
+
 const timer = document.querySelector(".count-time");
 const count = setInterval(countTime, 1000);
 
@@ -56,30 +57,29 @@ function countTime() {
   if (timer.innerHTML === "0") {
     timer.style.animationName = "none";
     // add edit
-    document.getElementById("failed").play();
     clearInterval(count);
     endGame();
   }
 }
-if (window.sessionStorage.getItem("userName")) {
-  // overlay.style.height = "200vh";
-  // overlay.style.width = "0px";
-  error.style.display = "none";
-  enterStartGame.style.display = "none";
-  cont.style.width = "1000px";
-  poupUser.style.width = "0px";
-  poupUser.style.padding = "0px";
-  userName.innerHTML = `Hello: ${sessionStorage.getItem("userName")}`;
-  sub.parentElement.remove();
-}
+// if (window.sessionStorage.getItem("userName")) {
+//   // overlay.style.height = "200vh";
+//   // overlay.style.width = "0px";
+//   error.style.display = "none";
+//   enterStartGame.style.display = "none";
+//   cont.style.width = "1000px";
+//   poupUser.style.width = "0px";
+//   poupUser.style.padding = "0px";
+//   userName.innerHTML = `Hello: ${sessionStorage.getItem("userName")}`;
+//   sub.parentElement.remove();
+// }
 ////////////
 
 ////////////
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
-    sub.click();
-  }
-});
+// document.addEventListener("keydown", (event) => {
+//   if (event.key === "Enter") {
+//     sub.click();
+//   }
+// });
 
 // function userName() {
 //   let div = document.createElement("div")
@@ -304,7 +304,7 @@ document.addEventListener("click", (e) => {
       successGame();
       lettersContiner.classList.add("finished");
     } else {
-      winsCounter.style.backgroundColor = "rgb(124, 209, 174)";
+      winsCounter.style.backgroundColor = "rgb(0 158 16)";
       winsCounter.innerHTML++;
       document.getElementById("success").play();
     }

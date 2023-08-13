@@ -25,9 +25,9 @@ hr {
   justify-content: space-between;
   text-align: center;
 }
-.game-info .game-name {
+/* .game-info .game-name {
   flex: 1;
-}
+} */
 .game-info .category {
 }
 .game-info .category span {
@@ -285,7 +285,7 @@ hr {
   display: block;
 }
 /* ////////////// */
-.parent{
+.parent {
   background: #00000075;
   width: 100%;
   height: 100%;
@@ -315,7 +315,7 @@ hr {
   -o-transform: translate(-50%,-50%);
   */
   border-radius: 10px;
-  background-color: #FFF;
+  background-color: #fff;
   /* padding: 100px 20px; */
   padding: 30px;
   text-align: center;
@@ -387,7 +387,7 @@ hr {
   display: flex;
   margin: 0 5px 5px;
 }
-#playAgain{
+#playAgain {
   color: #009688;
   border: none;
   outline: none;
@@ -402,13 +402,13 @@ hr {
   display: none;
 }
 
-.column{
+.column {
   border-bottom: 1px solid #ddd;
 }
-.column span{
+.column span {
   display: block;
 }
-.circle{
+.circle {
   background-color: #009688;
   padding: 5px;
   width: 30px;
@@ -421,26 +421,22 @@ hr {
   -o-border-radius: 6px;
 }
 
-.count-time{
-animation-timing-function: linear;
-animation-duration: 0.3s;
-animation-iteration-count: infinite;
-animation-direction: alternate;
+.count-time {
+  animation-timing-function: linear;
+  animation-duration: 0.3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 @keyframes redAnimated {
-  to{
+  to {
     background-color: red;
   }
 }
 
-
-
-
-
 /* / */
 @media (max-width: 767px) {
-  .game-info{
+  .game-info {
     font-size: 10px;
   }
   .row {
@@ -449,7 +445,7 @@ animation-direction: alternate;
   .cont {
     width: auto !important;
   }
-  .popup{
+  .popup {
     width: 100%;
     border-right: 6px solid #00000075;
     border-left: 6px solid #00000075;
