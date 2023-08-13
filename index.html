@@ -10,9 +10,15 @@
     <!-- <div class="overlay"></div> -->
     <div class="cont">
       <div class="game-info">
-        <div class="game-name">Hangman</div>
-        <!-- <div class="userName"></div> -->
-        <strong class="">"The site must be in English"</strong>
+        <!-- <div class="game-name">Hangman</div> -->
+        <div class="inputUser">
+          <h3 id="userName" style="margin: 0;"></h3>
+            <div class="">
+              <input type="text" placeholder="user name" id="user-name">
+              <button id="submit" class="submit">Submit</button>
+            </div>
+        </div>
+        <strong class="rule">"The site must be in English"</strong>
         <div class="category">Category Is: <span class=""></span></div>
       </div>
       <hr />
@@ -31,6 +37,10 @@
             <div class="correct column">
               <span>Correct:</span>
               <p class=" circle wins-counter">0</p>
+            </div>
+            <div class="hint">
+              <span id="show-hint" class="circle ">Answer</span>
+              <!-- <span id="hint"></span> -->
             </div>
           </div>
           <div class="the-draw">

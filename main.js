@@ -312,15 +312,6 @@ document.addEventListener("click", (e) => {
   }
 });
 // End Game Function
-// function statues() {
-//   let rate = wrongs;
-//   const spanWr = document.createElement("span")
-//   const spanWrT = document.createTextNode(rate)
-//   spanWr.appendChild(spanWrT)
-//   if (wrongs >= 5) {
-//     spanWrT.innerHTML = "Great"
-//   }
-// }
 function successGame() {
   clearInterval(count);
   document.body.style.overflow = "hidden";
@@ -329,7 +320,7 @@ function successGame() {
   let div = document.createElement("div");
   let spanBravo = document.createElement("span");
   let spanT = document.createTextNode(
-    `Congratulation: "${sessionStorage.getItem("userName")}"🎉`
+    `Congratulation: "${sessionStorage.getItem("User Name")}"🎉`
   );
   let word = document.createElement("span");
   let wordT = document.createTextNode(`The Word Is "${randomValueValue}"`);
@@ -396,7 +387,73 @@ function endGame() {
   parent.appendChild(div);
   document.body.appendChild(parent);
 }
+// add user name
 
+const userNameValue = document.getElementById("userName");
+const inputValue = document.getElementById("user-name");
+const submit = document.getElementById("submit")
+
+
+submit.addEventListener("click", () => {
+  if (inputValue.value === "") {
+    alert("Please Fill Input")
+  } else {
+    userNameValue.innerHTML = `Hello: ${inputValue.value}`
+    submit.parentElement.remove()
+  }
+})
+
+inputValue.oninput = () => {
+  window.sessionStorage.setItem("UserName", inputValue.value)
+}
+
+if (window.sessionStorage.getItem("UserName")) {
+  userNameValue.innerHTML = `Hello: ${window.sessionStorage.getItem("UserName")}`
+  submit.parentElement.remove()
+
+}
+// hint
+const showHint = document.getElementById("show-hint");
+const hint = document.getElementById("hint")
+showHint.addEventListener("click", () => {
+  showAnswer()
+})
+function showAnswer() {
+  // add button
+  let btn = document.createElement("button");
+  let playAgain = document.createTextNode("Hide");
+  btn.id = "playAgain";
+  btn.onclick = () => {
+    btn.parentElement.parentElement.remove()
+    // hideAnswer()
+  };
+  btn.appendChild(playAgain);
+  
+  //
+  const parent = document.createElement("div")
+  parent.className = "parent";
+  const hint = document.createElement("div")
+  const span = document.createElement("span")
+  span.style.display = "block"
+  span.id = "hint"
+  hint.className = "popup";
+  const text = document.createTextNode(`The Word Is : ${randomValueValue}`)
+  hint.appendChild(span)
+  hint.appendChild(btn)
+  span.appendChild(text)
+  parent.appendChild(hint)
+  document.body.appendChild(parent)
+}
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    submit.click()
+  }
+})
+// function hideAnswer() {
+//   showHint.remove()
+// }
+// console.log(Array.from(randomValueValue).sort());
 reset.addEventListener("click", () => {
   location.reload();
 });
