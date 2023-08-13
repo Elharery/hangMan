@@ -320,7 +320,7 @@ function successGame() {
   let div = document.createElement("div");
   let spanBravo = document.createElement("span");
   let spanT = document.createTextNode(
-    `Congratulation: "${sessionStorage.getItem("User Name")}"🎉`
+    `Congratulation: "${sessionStorage.getItem("UserName")}"🎉`
   );
   let word = document.createElement("span");
   let wordT = document.createTextNode(`The Word Is "${randomValueValue}"`);
@@ -421,7 +421,7 @@ showHint.addEventListener("click", () => {
 function showAnswer() {
   // add button
   let btn = document.createElement("button");
-  let playAgain = document.createTextNode("Hide");
+  let playAgain = document.createTextNode("Got It!");
   btn.id = "playAgain";
   btn.onclick = () => {
     btn.parentElement.parentElement.remove()
@@ -450,6 +450,10 @@ document.addEventListener("keydown", (e) => {
     submit.click()
   }
 })
+/////
+const getYear = new Date().getFullYear()
+
+document.querySelector(".coby-right span").textContent = getYear;
 // function hideAnswer() {
 //   showHint.remove()
 // }

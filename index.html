@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hangman Game</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <!-- <div class="overlay"></div> -->
@@ -26,21 +27,23 @@
         <div class="hangman-draw">
           <div class="info-game">
             <div class="timer column">
-              <span>Timer:</span>
+              <span class="title">Timer:</span>
               <p class="count-time circle">90</p>
             </div>
             <div class="div-wrongs column">
-              <span>Attembts:</span>
+              <span class="title">Attembts:</span>
               <!-- <span style="font-size: 5px;">At Least 8 Wrongs</span> -->
               <p class="wrongs circle">0</p>
             </div>
             <div class="correct column">
-              <span>Correct:</span>
+              <span class="title">Correct:</span>
               <p class=" circle wins-counter">0</p>
             </div>
-            <div class="hint">
-              <span id="show-hint" class="circle ">Answer</span>
-              <!-- <span id="hint"></span> -->
+            <div class="new">
+              <span id="" class="title">New Game</span>
+              <span id="reset" class="circle new-game">
+                <i class="fa-solid fa-rotate-right"></i>
+              </span>
             </div>
           </div>
           <div class="the-draw">
@@ -63,12 +66,12 @@
         class="btns"
         style="
           display: flex;
-          justify-content: center;
+          justify-content: space-between;
           margin: 30px 0 0;
           gap: 5px;
         "
       >
-        <button
+        <!-- <button
           id="reset"
           style="
             padding: 10px 15px;
@@ -78,23 +81,25 @@
             cursor: pointer;
           "
         >
-          Reset Game</button
-        ><button
-          id="logout"
-          style="
-            padding: 10px 15px;
-            outline: none;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            background-color: #f00;
-            color: #fff;
-          "
-        >
-          Logout
-        </button>
+          Reset Game</button -->
+          <p class="help">If You Need Help Press Here <span id="show-hint">Help</span></p>
+          <div class="coby-right">© Mohamed Tamer <span></span></div>
+        </div>
       </div>
-    </div>
+      <button
+      id="logout"
+      style="
+        padding: 10px 15px;
+        outline: none;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        background-color: #f00;
+        color: #fff;
+      "
+    >
+    <i class="fa-solid fa-right-from-bracket logout"></i>
+    </button>
     <audio src="audio/success.mp3" preload="auto" id="success"></audio>
     <audio src="audio/fail.mp3" preload="auto" id="fail"></audio>
     <audio src="audio/successed.mp3" preload="auto" id="successed"></audio>
