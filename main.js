@@ -41,11 +41,8 @@ sub.onclick = () => {
     error.style.display = "block";
   }
 }
-userNameInp.oninput = () => {
-  error.style.display = "none";
-};
-const count = setInterval(countTime, 1000)
 const timer = document.querySelector(".count-time");
+const count = setInterval(countTime, 1000)
 function countTime() {
   if (timer.innerHTML !== "0") {
     timer.innerHTML--;
@@ -59,9 +56,13 @@ function countTime() {
     endGame()
   }
 }
+userNameInp.oninput = () => {
+  error.style.display = "none";
+};
 if (window.sessionStorage.getItem("userName")) {
   // overlay.style.height = "200vh";
   // overlay.style.width = "0px";
+  error.style.display = "none"
   enterStartGame.style.display = "none";
   cont.style.width = "1000px";
   poupUser.style.width = "0px";
@@ -359,12 +360,12 @@ function successGame() {
 }
 
 function endGame() {
-  clearInterval(count)
+  document.getElementById("failed").play();
+  // clearInterval(count)
   document.body.style.overflow = "hidden";
   // faileds()
   let parent = document.createElement("div")
   parent.className = "parent";
-  document.getElementById("failed").play();
   // document.getElementById("fail").pause();
   // document.getElementById("fail").currentTime = 0; // stop the sound
   let div = document.createElement("div");
