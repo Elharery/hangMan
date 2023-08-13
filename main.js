@@ -22,24 +22,11 @@ let body = document.querySelector(".body");
 let reg = /\w+/ig;
 let reged = reg.test(userNameInp);
 console.log(reg.test(userNameInp));
-const timer = document.querySelector(".count-time");
 
-const count = setInterval(countTime,1000)
-function countTime() {
-if (timer.innerHTML !== "0") {
-timer.innerHTML--;
-}
-if (timer.innerHTML <= "10") {
-  timer.style.animationName = "redAnimated"
-}
-if (timer.innerHTML === "0") {
-timer.style.animationName = "none"
-clearInterval(count)
-endGame()
-}
 sub.onclick = () => {
   if (userNameInp.value) {
-
+    
+    location.reload()
     //
     window.sessionStorage.setItem("userName", userNameInp.value);
     // overlay.style.width = "0px";
@@ -54,10 +41,24 @@ sub.onclick = () => {
     error.style.display = "block";
   }
 }
-};
 userNameInp.oninput = () => {
   error.style.display = "none";
 };
+const count = setInterval(countTime, 1000)
+const timer = document.querySelector(".count-time");
+function countTime() {
+  if (timer.innerHTML !== "0") {
+    timer.innerHTML--;
+  }
+  if (timer.innerHTML <= "10") {
+    timer.style.animationName = "redAnimated"
+  }
+  if (timer.innerHTML === "0") {
+    timer.style.animationName = "none"
+    clearInterval(count)
+    endGame()
+  }
+}
 if (window.sessionStorage.getItem("userName")) {
   // overlay.style.height = "200vh";
   // overlay.style.width = "0px";
@@ -66,8 +67,8 @@ if (window.sessionStorage.getItem("userName")) {
   poupUser.style.width = "0px";
   poupUser.style.padding = "0px";
   userName.innerHTML = `Hello: ${sessionStorage.getItem("userName")}`;
-  sub.parentElement.remove();
-}
+    sub.parentElement.remove();
+  }
 ////////////
 
 
