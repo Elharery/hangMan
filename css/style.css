@@ -360,11 +360,15 @@ hr {
 #user-name {
   background: #eee;
   border-radius: 10px 0 0 10px;
-  padding: 10px 15px;
+  padding: 10px 0 10px 10px;
   outline: none;
   border: none;
-  /* margin: 0; */
-  position: relative;
+  /*margin: 0;
+  */position: relative;
+  -webkit-border-radius: 10px 0 0 10px;
+  -moz-border-radius: 10px 0 0 10px;
+  -ms-border-radius: 10px 0 0 10px;
+  -o-border-radius: 10px 0 0 10px;
 }
 .submit {
   background-color: #0075ff;
@@ -475,6 +479,7 @@ hr {
   position: fixed;
   bottom: 5px;
   right: 5px;
+  z-index: 1;
 }
 .logout {
 }
@@ -491,7 +496,7 @@ hr {
   }
   .game-info {
     display: block;
-    text-align: left;
+    text-align: center;
     font-size: 10px;
   }
   .row {
