@@ -464,6 +464,7 @@ hr {
   color: gray;
 }
 #logout {
+  display: none;
   padding: 10px 15px;
   outline: none;
   border: none;

@@ -398,6 +398,7 @@ submit.addEventListener("click", () => {
   if (inputValue.value === "") {
     alert("Please Fill Input")
   } else {
+    document.getElementById("logout").style.display = "block";
     userNameValue.innerHTML = `Hello: ${inputValue.value}`
     submit.parentElement.remove()
   }
