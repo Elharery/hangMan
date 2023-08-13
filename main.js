@@ -3,7 +3,7 @@ const sub = document.getElementById("sub");
 //
 let cont = document.querySelector(".cont");
 //
-let winsCounter = document.querySelector(".wins-counter")
+let winsCounter = document.querySelector(".wins-counter");
 //
 
 const overlay = document.querySelector(".overlay");
@@ -19,14 +19,13 @@ let gameInfo = document.querySelector(".game-info");
 let enterStartGame = document.getElementById("enter-start-game");
 //
 let body = document.querySelector(".body");
-let reg = /\w+/ig;
+let reg = /\w+/gi;
 let reged = reg.test(userNameInp);
 console.log(reg.test(userNameInp));
 
 sub.onclick = () => {
   if (userNameInp.value) {
-    
-    location.reload()
+    location.reload();
     //
     window.sessionStorage.setItem("userName", userNameInp.value);
     // overlay.style.width = "0px";
@@ -40,43 +39,45 @@ sub.onclick = () => {
   } else {
     error.style.display = "block";
   }
-}
+};
+userNameInp.oninput = () => {
+  error.style.display = "none";
+};
 const timer = document.querySelector(".count-time");
-const count = setInterval(countTime, 1000)
+const count = setInterval(countTime, 1000);
+
 function countTime() {
   if (timer.innerHTML !== "0") {
     timer.innerHTML--;
   }
   if (timer.innerHTML <= "10") {
-    timer.style.animationName = "redAnimated"
+    timer.style.animationName = "redAnimated";
   }
   if (timer.innerHTML === "0") {
-    timer.style.animationName = "none"
-    clearInterval(count)
-    endGame()
+    timer.style.animationName = "none";
+    // add edit
+    document.getElementById("failed").play();
+    clearInterval(count);
+    endGame();
   }
 }
-userNameInp.oninput = () => {
-  error.style.display = "none";
-};
 if (window.sessionStorage.getItem("userName")) {
   // overlay.style.height = "200vh";
   // overlay.style.width = "0px";
-  error.style.display = "none"
+  error.style.display = "none";
   enterStartGame.style.display = "none";
   cont.style.width = "1000px";
   poupUser.style.width = "0px";
   poupUser.style.padding = "0px";
   userName.innerHTML = `Hello: ${sessionStorage.getItem("userName")}`;
-    sub.parentElement.remove();
-  }
+  sub.parentElement.remove();
+}
 ////////////
 
-
 ////////////
-document.addEventListener('keydown', event => {
-  if (event.key === 'Enter') {
-    sub.click()
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    sub.click();
   }
 });
 
@@ -190,8 +191,8 @@ const words = {
     "Ford",
     "Peugeot",
     "Porsche",
-    "Bentley"
-  ]
+    "Bentley",
+  ],
 };
 
 //  get random property
@@ -299,12 +300,10 @@ document.addEventListener("click", (e) => {
         lettersContiner.classList.add("finished");
         // document.body.style = "overflow : hidden;";
       }
-    } 
-    else if (result.length === choosenWord.length) {
+    } else if (result.length === choosenWord.length) {
       successGame();
       lettersContiner.classList.add("finished");
-    }
-    else {
+    } else {
       winsCounter.style.backgroundColor = "rgb(124, 209, 174)";
       winsCounter.innerHTML++;
       document.getElementById("success").play();
@@ -314,57 +313,55 @@ document.addEventListener("click", (e) => {
 });
 // End Game Function
 // function statues() {
-  //   let rate = wrongs;
-  //   const spanWr = document.createElement("span")
-  //   const spanWrT = document.createTextNode(rate)
-  //   spanWr.appendChild(spanWrT)
-  //   if (wrongs >= 5) {
-    //     spanWrT.innerHTML = "Great"
-    //   }
-    // }
+//   let rate = wrongs;
+//   const spanWr = document.createElement("span")
+//   const spanWrT = document.createTextNode(rate)
+//   spanWr.appendChild(spanWrT)
+//   if (wrongs >= 5) {
+//     spanWrT.innerHTML = "Great"
+//   }
+// }
 function successGame() {
-  clearInterval(count)
+  clearInterval(count);
   document.body.style.overflow = "hidden";
-  let parent = document.createElement("div")
+  let parent = document.createElement("div");
   parent.className = "parent";
   let div = document.createElement("div");
   let spanBravo = document.createElement("span");
   let spanT = document.createTextNode(
     `Congratulation: "${sessionStorage.getItem("userName")}"🎉`
-    );
-    let word = document.createElement("span");
-    let wordT = document.createTextNode(`The Word Is "${randomValueValue}"`);
-    //
-    //
-    div.appendChild(spanBravo);
-    spanBravo.appendChild(spanT);
-    div.appendChild(word);
-    word.appendChild(wordT);
-    //
-    spanBravo.style.display = "block";
+  );
+  let word = document.createElement("span");
+  let wordT = document.createTextNode(`The Word Is "${randomValueValue}"`);
+  //
+  //
+  div.appendChild(spanBravo);
+  spanBravo.appendChild(spanT);
+  div.appendChild(word);
+  word.appendChild(wordT);
+  //
+  spanBravo.style.display = "block";
   word.style.display = "block";
   div.className = "popup";
   document.getElementById("successed").play();
   //add button
-  let btn = document.createElement("button")
+  let btn = document.createElement("button");
   let playAgain = document.createTextNode("Play Again");
   btn.id = "playAgain";
   btn.onclick = () => {
-    location.reload()
-  }
-  div.appendChild(btn)
-  btn.appendChild(playAgain)
-      //
-      parent.appendChild(div)
+    location.reload();
+  };
+  div.appendChild(btn);
+  btn.appendChild(playAgain);
+  //
+  parent.appendChild(div);
   document.body.appendChild(parent);
 }
 
 function endGame() {
   document.getElementById("failed").play();
-  // clearInterval(count)
   document.body.style.overflow = "hidden";
-  // faileds()
-  let parent = document.createElement("div")
+  let parent = document.createElement("div");
   parent.className = "parent";
   // document.getElementById("fail").pause();
   // document.getElementById("fail").currentTime = 0; // stop the sound
@@ -373,11 +370,11 @@ function endGame() {
   //
   let divT = document.createTextNode(
     `Game Over , The Word Is "${randomValueValue}"`
-    );
-    //
-    const spanSad = document.createElement("span");
-    const SadText = document.createTextNode("^_^");
-    //
+  );
+  //
+  const spanSad = document.createElement("span");
+  const SadText = document.createTextNode("^_^");
+  //
   //
   spanSad.appendChild(SadText);
   spanBad.appendChild(divT);
@@ -387,16 +384,16 @@ function endGame() {
   // div.appendChild(divT);
   div.className = "popup";
   // add button
-  let btn = document.createElement("button")
+  let btn = document.createElement("button");
   let playAgain = document.createTextNode("Play Again");
   btn.id = "playAgain";
   btn.onclick = () => {
-    location.reload()
-  }
-  div.appendChild(btn)
-  btn.appendChild(playAgain)
+    location.reload();
+  };
+  div.appendChild(btn);
+  btn.appendChild(playAgain);
   //
-  parent.appendChild(div)
+  parent.appendChild(div);
   document.body.appendChild(parent);
 }
 
