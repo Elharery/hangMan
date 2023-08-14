@@ -409,6 +409,7 @@ inputValue.oninput = () => {
 }
 
 if (window.sessionStorage.getItem("UserName")) {
+  document.getElementById("logout").style.display = "block";
   userNameValue.innerHTML = `Hello: ${window.sessionStorage.getItem("UserName")}`
   submit.parentElement.remove()
 
