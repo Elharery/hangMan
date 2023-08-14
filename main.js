@@ -209,6 +209,7 @@ let randomPropValue = words[randomPropName];
 let randomValueNum = Math.floor(Math.random() * randomPropValue.length);
 
 let randomValueValue = randomPropValue[randomValueNum];
+// let randomValueValue = "MercedesBenz";
 // let randomValueValue = "php";
 // console.log(randomPropValue);
 // console.log(randomValueNum);
@@ -254,6 +255,7 @@ let draw = document.querySelector(".hangman-draw");
 
 // document.addEventListener("click", (e)=>console.log(e.key))
 
+document.getElementById("length").innerHTML = guessSpans.length;
 const wrongs = document.querySelector(".wrongs");
 let result = "";
 document.addEventListener("click", (e) => {
@@ -301,9 +303,11 @@ document.addEventListener("click", (e) => {
         // document.body.style = "overflow : hidden;";
       }
     } else if (result.length === choosenWord.length) {
+      document.getElementById("length").innerHTML = 0
       successGame();
       lettersContiner.classList.add("finished");
     } else {
+      // document.getElementById("length").innerHTML--;
       winsCounter.style.backgroundColor = "rgb(0 158 16)";
       winsCounter.innerHTML++;
       document.getElementById("success").play();

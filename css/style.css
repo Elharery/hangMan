@@ -214,6 +214,7 @@ hr {
   pointer-events: none;
 }
 .letters-guess {
+  overflow: auto;
   margin: 10px auto;
   background-color: #f8f8f8;
   padding: 20px;
