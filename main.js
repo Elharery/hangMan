@@ -1,11 +1,3 @@
-// // add button name
-// const sub = document.getElementById("sub");
-// //
-// let cont = document.querySelector(".cont");
-// //
-let winsCounter = document.querySelector(".wins-counter");
-// //
-
 // const overlay = document.querySelector(".overlay");
 // //
 // const userName = document.querySelector(".userName");
@@ -43,6 +35,14 @@ let winsCounter = document.querySelector(".wins-counter");
 // userNameInp.oninput = () => {
 //   error.style.display = "none";
 // };
+// // add button name
+// const sub = document.getElementById("sub");
+// //
+// let cont = document.querySelector(".cont");
+// //
+let winsCounter = document.querySelector(".wins-counter");
+// //
+
 
 const timer = document.querySelector(".count-time");
 const count = setInterval(countTime, 1000);
@@ -59,7 +59,7 @@ function countTime() {
     // add edit
     clearInterval(count);
     endGame();
-  }
+  }/////////////////////////////////////////////////////////////////////////////////
 }
 // if (window.sessionStorage.getItem("userName")) {
 //   // overlay.style.height = "200vh";
@@ -398,15 +398,18 @@ submit.addEventListener("click", () => {
   if (inputValue.value === "") {
     alert("Please Fill Input")
   } else {
+    
+
+    window.sessionStorage.setItem("UserName", inputValue.value)
+    location.reload()
     document.getElementById("logout").style.display = "block";
     userNameValue.innerHTML = `Hello: ${inputValue.value}`
     submit.parentElement.remove()
   }
 })
 
-inputValue.oninput = () => {
-  window.sessionStorage.setItem("UserName", inputValue.value)
-}
+// inputValue.oninput = () => {
+// }
 
 if (window.sessionStorage.getItem("UserName")) {
   document.getElementById("logout").style.display = "block";
