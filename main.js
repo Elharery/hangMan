@@ -14,9 +14,8 @@
 // let reg = /\w+/gi;
 // let reged = reg.test(userNameInp);
 // console.log(reg.test(userNameInp));
-
 // sub.onclick = () => {
-//   if (userNameInp.value) {
+  //   if (userNameInp.value) {
 //     location.reload();
 //     //
 //     window.sessionStorage.setItem("userName", userNameInp.value);
@@ -29,12 +28,12 @@
 //     cont.style.width = "1000px";
 //     sub.parentElement.remove();
 //   } else {
-//     error.style.display = "block";
-//   }
+  //     error.style.display = "block";
+  //   }
 // };
 // userNameInp.oninput = () => {
-//   error.style.display = "none";
-// };
+  //   error.style.display = "none";
+  // };
 // // add button name
 // const sub = document.getElementById("sub");
 // //
@@ -152,6 +151,14 @@ const words = {
     "Hitchcock",
     "Alexander",
     "Cleopatra",
+    "Michael",
+    "john",
+    "Robert",
+    "David",
+    "Wiliam",
+    "Thomas",
+    "Elzero",
+    "Messi"
     // ""
     // "Mahatma Ghandi",
     // "Mohamed Tamer",
@@ -168,6 +175,8 @@ const words = {
     "Qatar",
     "USA",
     "KSA",
+    "Dubai",
+    "Emirates"
   ],
   cars: [
     "Bmw",
@@ -260,29 +269,35 @@ const wrongs = document.querySelector(".wrongs");
 let result = "";
 document.addEventListener("click", (e) => {
   let theStatus = false;
+  
   if (e.target.className === "letter-box") {
-    e.target.classList.add("clicked");
+    e.target.classList.add("clicked")
     // get clicked letter
     let clickedLetter = e.target.innerHTML.toLowerCase();
     // choosen word
     let choosenWord = Array.from(randomValueValue.toLowerCase());
+    // e.target.classList.add("clicked");
     // let choosenWord = ["p","h", "p"]
     // lettersAndSpace choosen word
     choosenWord.forEach((wordLetter, wordIndex) => {
       // if clicked letter equal to one of the choosen word letters
       if (clickedLetter == wordLetter) {
-        // set status to true
-        theStatus = true;
-        result += clickedLetter;
-        // console.log(`Found At Index Num ${index}`);
-        // loop on all guess spans
-        guessSpans.forEach((span, spanIndex) => {
-          if (wordIndex === spanIndex) {
-            span.innerHTML = clickedLetter;
-          }
-          //
-        });
+        if (clickedLetter === wordLetter) {
+          e.target.className = "letter-box true";
+        }
+          // set status to true
+          theStatus = true;
+          result += clickedLetter;
+          // console.log(`Found At Index Num ${index}`);
+          // loop on all guess spans
+          guessSpans.forEach((span, spanIndex) => {
+            if (wordIndex === spanIndex) {
+              span.innerHTML = clickedLetter;
+            }
+            //
+          });
       }
+        // e.target.classList.remove("true")
     });
     // outSide Loop
     //
@@ -308,14 +323,14 @@ document.addEventListener("click", (e) => {
       lettersContiner.classList.add("finished");
     } else {
       // document.getElementById("length").innerHTML--;
-      winsCounter.style.backgroundColor = "rgb(0 158 16)";
+      winsCounter.style.backgroundColor = "rgb(124, 209, 174)";
       winsCounter.innerHTML++;
       document.getElementById("success").play();
     }
     // console.log(theStatus);
   }
 });
-// End Game Function
+// -------------------------------------------------------------------------Functions-------------------------------------------------------------------------------
 function successGame() {
   clearInterval(count);
   document.body.style.overflow = "hidden";
@@ -354,8 +369,10 @@ function successGame() {
 }
 
 function endGame() {
-  document.getElementById("failed").play();
+  clearInterval(count)
   document.body.style.overflow = "hidden";
+  document.getElementById("length").innerHTML = 0
+  document.getElementById("failed").play();
   let parent = document.createElement("div");
   parent.className = "parent";
   // document.getElementById("fail").pause();
