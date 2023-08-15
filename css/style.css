@@ -499,6 +499,14 @@ hr {
 }
 /* / */
 @media (max-width: 767px) {
+  #submit{
+    font-size: 12px;
+    padding: 5px 4px ;
+  }
+  #user-name{
+    font-size: 12px;
+    padding: 5px 0 5px 5px ;
+  }
   .hangman-draw{
   gap: 55px !important;
   }
