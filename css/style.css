@@ -513,14 +513,14 @@ hr {
 }
 #logout {
   display: none;
-  padding: 10px 15px;
+  padding: 10px;
   outline: none;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   background-color: #f00;
   color: #fff;
-  position: fixed;
+  /* position: fixed; */
   bottom: 5px;
   right: 5px;
   z-index: 1;

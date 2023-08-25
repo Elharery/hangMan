@@ -440,7 +440,7 @@ submit.addEventListener("click", () => {
 
     window.sessionStorage.setItem("UserName", inputValue.value)
     location.reload()
-    document.getElementById("logout").style.display = "block";
+    document.getElementById("logout").style.display = "flex";
     userNameValue.innerHTML = `Hello: ${inputValue.value}`
     submit.parentElement.remove()
   }
