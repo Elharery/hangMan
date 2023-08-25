@@ -39,6 +39,22 @@
 // //
 // let cont = document.querySelector(".cont");
 // //
+let closeAndOpen  = document.querySelector(".close")
+
+closeAndOpen.onclick = () => {
+  if (lettersContiner.style.height != "0px") {
+    console.log(true);
+    lettersContiner.style.height = "0px";
+    lettersContiner.style.padding = "0px";
+    dropAndUp.style.rotate = "180deg";
+  } else {
+    lettersContiner.style.height = "fit-content";
+    lettersContiner.style.padding = "15px";
+    dropAndUp.style.rotate = "0deg";
+  }
+}
+
+//
 let winsCounter = document.querySelector(".wins-counter");
 // //
 
@@ -100,6 +116,7 @@ let lettersArray = Array.from(letters);
 // Select letters Continer
 let lettersContiner = document.querySelector(".letters");
 // generate letters
+// console.log(lettersContiner);
 
 lettersArray.forEach((letter) => {
   // creat span
