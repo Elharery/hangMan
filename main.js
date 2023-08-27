@@ -204,7 +204,7 @@ const words = {
     "Mitsubishi",
     "Nissan",
     "Kia",
-    "MercedesBenz",
+    // "MercedesBenz",
     "Gelly",
     "Mg",
     "Jeep",
@@ -235,6 +235,12 @@ let randomPropValue = words[randomPropName];
 let randomValueNum = Math.floor(Math.random() * randomPropValue.length);
 
 let randomValueValue = randomPropValue[randomValueNum];
+// console.log(`allkeys: ${allKeys}`);
+// console.log(`randomPropNumber: ${randomPropNumber}`);
+// console.log(`randomPropName: ${randomPropName}`);
+// console.log(`randomPropValue: ${randomPropValue}`);
+// console.log(` randomValueNum: ${randomValueNum}`);
+// console.log(`randomValueValue: ${randomValueValue}`);
 // let randomValueValue = "MercedesBenz";
 // let randomValueValue = "php";
 // console.log(randomPropValue);
@@ -356,7 +362,7 @@ function successGame() {
   let div = document.createElement("div");
   let spanBravo = document.createElement("span");
   let spanT = document.createTextNode(
-    `Congratulation: "${sessionStorage.getItem("UserName")}"🎉`
+    `Congratulation: "${sessionStorage.getItem("UserName") || "Unkown"}"🎉`
   );
   let word = document.createElement("span");
   let wordT = document.createTextNode(`The Word Is "${randomValueValue}"`);
@@ -448,7 +454,6 @@ submit.addEventListener("click", () => {
 
 // inputValue.oninput = () => {
 // }
-
 if (window.sessionStorage.getItem("UserName")) {
   document.getElementById("logout").style.display = "block";
   userNameValue.innerHTML = `Hello: ${window.sessionStorage.getItem("UserName")}`

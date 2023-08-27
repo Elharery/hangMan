@@ -30,15 +30,15 @@ body {
   padding: 5px;
 }
 @media (max-width: 767px){
-  .close{
+  /* .close{
     display: block;
-  }
-  .letters{
+  } */
+  /* .letters{
     position: fixed;
     bottom: 0;
     left: 0;
     background: #fff;
-  }
+  } */
 }
 /* .letters{
   transition: 1s;
@@ -227,9 +227,8 @@ hr {
   pointer-events: none;
 }
 .letters {
-
   flex: 1;
-  padding: 15px;
+  padding: 15px 0 0 ;
   text-align: center;
 }
 .letters .letter-box {
